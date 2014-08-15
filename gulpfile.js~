@@ -129,7 +129,7 @@ gulp.task('html', function () {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-   
+    .pipe($.useref.assets({searchPath: '{.tmp,app}'})).on('error',  function (err) { console.log(err);}) 
 
     // Update Production Style Guide Paths
     .pipe($.replace('components/components.css', 'components/main.min.css'))
